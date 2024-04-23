@@ -78,7 +78,15 @@ body {
   padding: 17px;
   padding-left: 23px;
 }
-
+.card__series {
+  overflow: scroll;
+  scrollbar-width: none;
+  flex-direction: row;
+  display: flex;
+  gap: 1.5rem;
+  padding: 17px;
+  padding-left: 23px;
+}
 .card:hover {
   transform: scale(1.1);
 }
