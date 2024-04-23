@@ -58,39 +58,30 @@ body {
 }
 /************************* MAIN**************************/
 
-/* Style de la galerie de cartes */
-#card-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 50px;
-}
-
-/* Style de chaque carte individuelle */
-.card__gallery {
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Style de l'image de la carte */
-.card__gallery img {
-  width: 100%;
-  border-radius: 24px;
-}
-
-/* Style du titre de la carte */
-.card__gallery h2 {
-  margin-top: 10px;
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #333;
-}
-
-/* Ajout d'une bordure autour de chaque carte */
 .card {
-  border: 2px solid #000000;
-  border-radius: 25px;
-  height: 450px;
+  border: black solid 4px;
+  text-align: center;
+  cursor: pointer;
+  padding: 20px;
 }
-.card p {
-  font-style: italic;
+
+.card__gallery {
+  overflow: scroll;
+  scrollbar-width: none;
+  flex-direction: row;
+  display: flex;
+  gap: 1.5rem;
+  padding: 17px;
+  padding-left: 23px;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.titre__h1 {
+  font-size: 2rem;
+  margin: 0;
+  margin-top: 30px;
+  margin-left: 25px;
 }

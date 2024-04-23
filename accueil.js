@@ -8,9 +8,6 @@ function createCard(data) {
   card.innerHTML = `
     <img src="https://image.tmdb.org/t/p/w400${data["backdrop_path"]}" >
     <h2>${data["original_title"]}</h2>
-    <p>${data["release_date"]}</p>
-    <hr>
-    <p>${data["overview"]}</p>
   `;
   cardGallery.appendChild(card);
 }
