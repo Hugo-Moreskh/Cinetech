@@ -7,6 +7,22 @@
     <link rel="stylesheet" href="accueil.css" />
   </head>
   <body>
+    <header>
+      <ul class="navigation">
+        <li><a class="active" href="accueil.html">Accueil</a></li>
+        <li><a href="#films">Nos Films</a></li>
+        <li><a href="#series">Nos Séries</a></li>
+        <li><a href="#about">Favoris</a></li>
+        <li class="search-bar">
+          <input
+            class="barre-recherche"
+            type="text"
+            placeholder="Recherchez un film, une série..."
+          />
+          <button type="submit">Go</button>
+        </li>
+      </ul>
+    </header>
     <div class="card__gallery" id="card-gallery"></div>
   </body>
   <script src="accueil.js"></script>

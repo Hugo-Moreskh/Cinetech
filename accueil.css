@@ -1,0 +1,96 @@
+/******************************** HEADER******************/
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  display: flex;
+  justify-content: space-around;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04aa6d;
+}
+.navigation {
+  display: flex;
+  align-items: center; /* Alignement vertical des éléments */
+}
+
+.search-bar {
+  margin-left: 25%; /* Place le groupe de recherche et le bouton à droite */
+}
+
+.barre-recherche {
+  width: 300px; /* Ajuster la largeur de la barre de recherche selon vos besoins */
+  padding: 5px; /* Ajuster le padding selon vos besoins */
+  border: 1px solid #ccc; /* Style de la bordure */
+  border-radius: 10px; /* Style de la bordure arrondie */
+  margin-right: 8px; /* Marge entre la barre de recherche et le bouton */
+}
+
+button {
+  padding: 3px 8px; /* Ajuster le padding selon vos besoins */
+  background-color: #04aa6d; /* Couleur de fond du bouton */
+  color: white; /* Couleur du texte du bouton */
+  border: none; /* Supprimer la bordure */
+  border-radius: 5px; /* Style de la bordure arrondie */
+  cursor: pointer; /* Afficher un curseur pointer au survol */
+}
+body {
+  margin: 0;
+}
+/************************* MAIN**************************/
+
+/* Style de la galerie de cartes */
+#card-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 50px;
+}
+
+/* Style de chaque carte individuelle */
+.card__gallery {
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style de l'image de la carte */
+.card__gallery img {
+  width: 100%;
+  border-radius: 24px;
+}
+
+/* Style du titre de la carte */
+.card__gallery h2 {
+  margin-top: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Ajout d'une bordure autour de chaque carte */
+.card {
+  border: 2px solid #000000;
+  border-radius: 25px;
+  height: 450px;
+}
+.card p {
+  font-style: italic;
+}

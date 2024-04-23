@@ -4,9 +4,13 @@ const cardGallery = document.getElementById("card-gallery");
 
 function createCard(data) {
   const card = document.createElement("div");
+  card.classList.add("card"); // Ajout de la classe "card" à chaque carte
   card.innerHTML = `
-    <h1>${data["original_title"]}</h1>
     <img src="https://image.tmdb.org/t/p/w400${data["backdrop_path"]}" >
+    <h2>${data["original_title"]}</h2>
+    <p>${data["release_date"]}</p>
+    <hr>
+    <p>${data["overview"]}</p>
   `;
   cardGallery.appendChild(card);
 }
