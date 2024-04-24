@@ -147,8 +147,9 @@ h2 {
   transition: 0.5s;
 }
 
-.footer .row a:hover {
+.footer .row .liens:hover {
   color: #fff;
+  background-color: #fecc00;
 }
 
 .footer .row ul {
