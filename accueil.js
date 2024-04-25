@@ -5,6 +5,7 @@ const cardGallery = document.getElementById("card-gallery");
 
 function createCard(data) {
   const card = document.createElement("div");
+
   card.classList.add("card"); // Ajout de la classe "card" à chaque carte
   card.innerHTML = `
     <img src="https://image.tmdb.org/t/p/w400${data["backdrop_path"]}" >
@@ -13,6 +14,7 @@ function createCard(data) {
     <h3>${data["original_title"]}</h3>
     <p>Langue originale: ${data["original_language"]}</p>
     <p>${data["overview"]}</p>
+    <button class="bouton-fav"> <img class="favoris" src= "images/logo_popcorn.png"> </button>
   </div>
   `;
   cardGallery.appendChild(card);
@@ -78,3 +80,27 @@ function displaySeriesCards(series) {
 }
 
 fetchSeries();
+
+// function favorisButton() {
+//   const favButton = document.getElementsByClassName("bouton-fav");
+
+//   // Ajoute un écouteur d'événements pour détecter les clics sur le bouton
+//   favButton.addEventListener("click", function () {
+//     console.log("test");
+//     // Vérifie si le bouton a la classe "active"
+//     // const isActive = favButton.classList.contains("active");
+
+//     // Si le bouton est déjà actif, on le désactive
+//     // if (isActive) {
+//     //   favButton.classList.remove("active");
+//     //   favButton.style.opacity = "0.5"; // Opacity à 50%
+//     // } else {
+//     //   // Sinon, on l'active
+//     //   favButton.classList.add("active");
+//     //   favButton.style.opacity = "1"; // Opacity à 100%
+//     // }
+//   });
+// }
+
+// // Appel de la fonction pour initialiser le comportement du bouton favoris
+// favorisButton();

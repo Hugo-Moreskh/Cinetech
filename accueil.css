@@ -25,7 +25,7 @@
 .navigation {
   list-style-type: none;
   margin: 0;
-  width: 100%;
+  width: 98%;
 
   overflow: hidden;
   background-color: #fecc00;
@@ -145,7 +145,18 @@ h2 {
   font-weight: 700;
   font-style: normal;
 }
-
+.favoris {
+  width: 50px;
+}
+.bouton-fav {
+  background-color: transparent;
+  border: none;
+  opacity: 0.5;
+}
+.bouton-fav.active {
+  opacity: 1; /* Opacité à 100% lorsque le bouton est actif */
+  /* Autres styles CSS pour votre bouton actif */
+}
 /*******************************FOOTER******************************/
 .footer {
   background: black;
@@ -174,7 +185,7 @@ h2 {
 }
 
 .footer .row ul {
-  width: 100%;
+  width: 90%;
 }
 
 .footer .row ul li {
