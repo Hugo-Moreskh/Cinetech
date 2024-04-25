@@ -9,6 +9,11 @@ function createCard(data) {
   card.innerHTML = `
     <img src="https://image.tmdb.org/t/p/w400${data["backdrop_path"]}" >
     <h2>${data["original_title"]}</h2>
+    <div class="details">
+    <h3>${data["original_title"]}</h3>
+    <p>Langue originale: ${data["original_language"]}</p>
+    <p>${data["overview"]}</p>
+  </div>
   `;
   cardGallery.appendChild(card);
 }
@@ -42,15 +47,15 @@ function createSeriesCard(data) {
   // Crée une image pour chaque carte
   const image = document.createElement("img");
   image.src = `https://image.tmdb.org/t/p/w400${data["backdrop_path"]}`;
-
-  // Crée un paragraphe pour le titre de la série
-  const title = document.createElement("h2");
-  title.textContent = data["name"]; // Utilisez "name" pour le titre de la série
-
-  // Ajoute l'image et le titre à la carte
-  card.appendChild(image);
-  card.appendChild(title);
-
+  card.innerHTML = `
+  <img src="https://image.tmdb.org/t/p/w400${data["backdrop_path"]}" >
+  <h2>${data["name"]}</h2>
+  <div class="details">
+  <h3>${data["name"]}</h3>
+  <p>Langue originale: ${data["original_language"]}</p>
+  <p>${data["overview"]}</p>
+</div>
+`;
   // Ajoute la carte à la galerie de cartes des séries
   cardSeries.appendChild(card);
 }
