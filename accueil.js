@@ -5,9 +5,9 @@ const cardGallery = document.getElementById("card-gallery");
 
 function createCard(data) {
   const card = document.createElement("div");
-
-  card.classList.add("card"); // Ajout de la classe "card" à chaque carte
-  card.innerHTML = `
+  if (movie.backdrop_path) {
+    card.classList.add("card"); // Ajout de la classe "card" à chaque carte
+    card.innerHTML = `
     <img src="https://image.tmdb.org/t/p/w400${data["backdrop_path"]}" >
     <h2>${data["original_title"]}</h2>
     <div class="details">
@@ -17,7 +17,8 @@ function createCard(data) {
     <button class="bouton-fav"> <img class="favoris" src= "images/logo_popcorn.png"> </button>
   </div>
   `;
-  cardGallery.appendChild(card);
+    cardGallery.appendChild(card);
+  }
 }
 
 function displayCards(movies) {
