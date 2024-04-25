@@ -1,6 +1,6 @@
 body {
     font-family: 'Open Sans', sans-serif;
-    background-image: url(images/logo_cinetech_2.png), url(images/logo_connexion-.png);
+    background-size: 95px;
 }
 
 .theform {
@@ -32,16 +32,17 @@ body {
 .buttonsub {
     display: flex;
     justify-content: center;
-    align-items: center;
     border: none;
     margin-bottom: 15px;
 }
 
 #button_connection {
-    background-color: transparent;
     border: none;
     color: white;
     cursor: pointer;
+    background-color: #F68922;
+    border-radius: 10px;
+    width: auto;
 }
 
 #email {
