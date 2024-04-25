@@ -2,13 +2,19 @@
 const divContainer = document.getElementById("card-gallery-films");
 const btn_moins = document.getElementById("btn_moins");
 const btn_plus = document.getElementById("btn_plus");
+const btn_actuel = document.getElementById("btn_actuel")
 
 let pageNumber = 1; // Numéro de la page souhaitée
+
+btn_actuel.textContent = pageNumber;
+
 
 // Écouteur d'événement pour le bouton "Plus"
 btn_plus.addEventListener("click", function () {
     pageNumber++;
     fetchAndDisplayMovies(pageNumber);
+    btn_actuel.textContent = pageNumber;
+
 });
 
 // Écouteur d'événement pour le bouton "Moins"
@@ -16,13 +22,15 @@ btn_moins.addEventListener("click", function () {
     if (pageNumber > 1) {
         pageNumber--;
         fetchAndDisplayMovies(pageNumber);
+        btn_actuel.textContent = pageNumber;
+
     }
 });
 
 // Fonction pour récupérer et afficher les films en fonction du numéro de page
 async function fetchAndDisplayMovies(pageNumber) {
         const apiKey = 'e4e579c63025eb13c4c8457b41c2ced2';
-        const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${pageNumber}`;
+        const url = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&page=${pageNumber}`;
 
         const res = await fetch(url);
         const resData = await res.json();
@@ -36,7 +44,7 @@ async function fetchAndDisplayMovies(pageNumber) {
         movies.forEach(movie => {
 
             // card.appendChild(title);
-            if (movie.adult == false){
+            if (movie.backdrop_path){
             // Ajoute la carte à la galerie de cartes des séries
             const card = document.createElement("div");
             card.classList.add("card");
@@ -55,7 +63,7 @@ async function fetchAndDisplayMovies(pageNumber) {
             details.classList.add("details_films")
 
             const details_title = document.createElement("h2");
-            details_title.textContent = movie.title
+            details_title.textContent = movie.name
 
             const details_VO = document.createElement("h3");
             details_VO.textContent = movie.original_language;

@@ -1,0 +1,87 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-image: url(images/logo_cinetech_2.png), url(images/logo_connexion-.png);
+}
+
+.theform {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+  }
+
+.title {
+    font-size: xx-large;
+}
+
+.connexion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FECC00;
+    margin-bottom: 20px;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #303030;
+    color: white;
+    width: 800px;
+    height: auto;
+}
+
+.buttonsub {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    margin-bottom: 15px;
+}
+
+#button_connection {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+#email {
+    margin-left: 5px;
+    border-radius: 10px;
+    border: none;
+}
+
+#password {
+    margin-left: 5px;
+    border-radius: 10px;
+    border: none;
+}
+
+.inscription {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FECC00;
+    margin-bottom: 20px;
+}
+
+#username {
+    margin-left: 5px;
+    border-radius: 10px;
+    border: none;
+}
+
+#name {
+    margin-left: 5px;
+    border-radius: 10px;
+    border: none;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
