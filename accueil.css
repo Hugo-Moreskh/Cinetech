@@ -25,7 +25,7 @@
 .navigation {
   list-style-type: none;
   margin: 0;
-  width: 90%;
+  width: 97%;
 
   overflow: hidden;
   background-color: #fecc00;
@@ -126,7 +126,7 @@ h2 {
 }
 
 /*******************************FOOTER******************************/
-.footer {
+ .footer {
   background: black;
   padding: 30px 0px;
   font-family: "Play", sans-serif;
@@ -153,7 +153,7 @@ h2 {
 }
 
 .footer .row ul {
-  width: 100%;
+  width: 90%;
 }
 
 .footer .row ul li {
@@ -183,9 +183,9 @@ h2 {
 
 /*******************************PAGE FILMS******************************/
 
-#card-gallery {
+#card-gallery-films {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 #btn_moins, #btn_plus, #btn_actuel {

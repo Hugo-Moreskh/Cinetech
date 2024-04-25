@@ -1,5 +1,5 @@
 // Récupère les éléments du DOM
-const divContainer = document.getElementById("card-gallery");
+const divContainer = document.getElementById("card-gallery-films");
 const btn_moins = document.getElementById("btn_moins");
 const btn_plus = document.getElementById("btn_plus");
 
@@ -31,18 +31,45 @@ async function fetchAndDisplayMovies(pageNumber) {
 
         // Efface le contenu précédent
         divContainer.innerHTML = '';
+        console.log(resData)
 
         // Affiche les titres des films
         movies.forEach(movie => {
-            const movieTitle = movie.title;
-            const movieElement = document.createElement("p");
-            movieElement.textContent = movieTitle;
-            divContainer.appendChild(movieElement);
+
+            // card.appendChild(title);
+          
+            // Ajoute la carte à la galerie de cartes des séries
+            const card = document.createElement("div");
+            card.classList.add("card");
+
+            const title = document.createElement("h2");
+            title.textContent = movie.title;
+
+            const image = document.createElement("img");
+            image.src = `https://image.tmdb.org/t/p/w400${movie["backdrop_path"]}`;
+            card.appendChild(image);
+
+            card.appendChild(title);
+            divContainer.appendChild(card);
+
         });
     } catch (error) {
         console.error("Une erreur s'est produite lors de la récupération des films :", error);
     }
 }
+
+function createSeriesCard() {
+    card.classList.add("card"); // Ajout de la classe "card" à chaque carte
+  
+    // Crée une image pour chaque carte
+    
+  
+    // Crée un paragraphe pour le titre de la série
+     // Utilisez "name" pour le titre de la série
+  
+    // Ajoute l'image et le titre à la carte
+
+  }
 
 // Appel initial pour afficher les films de la première page
 fetchAndDisplayMovies(pageNumber);
