@@ -25,7 +25,7 @@
 .navigation {
   list-style-type: none;
   margin: 0;
-  width: 100%;
+  width: 90%;
 
   overflow: hidden;
   background-color: #fecc00;
@@ -179,4 +179,26 @@ h2 {
   .footer .row a i {
     margin: 0% 3%;
   }
+}
+
+/*******************************PAGE FILMS******************************/
+
+#card-gallery {
+  display: flex;
+  flex-direction: column;
+}
+
+#btn_moins, #btn_plus, #btn_actuel {
+    background-color: #303030;
+    border: 1px solid #303030;
+    color: #eee;
+}
+
+#btn_moins:hover, #btn_plus:hover, #btn_actuel:hover{
+  background-color: #191919;
+  border-radius: 10px;
+}
+
+#btn_moins:active, #btn_plus:active, #btn_actuel:active {
+  background-color:#303030 ;
 }
