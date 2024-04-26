@@ -45,7 +45,8 @@ async function fetchAndDisplayMovies(pageNumber) {
             // title.textContent = movie.title;
 
             const image = document.createElement("img");
-            image.src = `https://image.tmdb.org/t/p/w400${movie["backdrop_path"]}`;
+            image.src = `https://image.tmdb.org/t/p/w400${movie["poster_path"]}`;
+            image.classList.add("poster")
             card.appendChild(image);
 
             // card.appendChild(title);

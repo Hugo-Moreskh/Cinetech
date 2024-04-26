@@ -1,6 +1,6 @@
 body {
     font-family: 'Open Sans', sans-serif;
-    background-image: url(images/logo_cinetech_2.png), url(images/logo_connexion-.png);
+    background-size: 95px;
 }
 
 .theform {
@@ -35,16 +35,17 @@ body {
 .buttonsub {
     display: flex;
     justify-content: center;
-    align-items: center;
     border: none;
     margin-bottom: 15px;
 }
 
 #button_connection {
-    background-color: transparent;
     border: none;
     color: white;
     cursor: pointer;
+    background-color: #F68922;
+    border-radius: 3em;
+    width: 20%;
 }
 
 #email {
@@ -80,8 +81,28 @@ body {
 }
 
 .input-group {
+    width: 20em;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin-bottom: 30px;
+}
+
+.login {
+    justify-content: center;
+    margin: auto;
+    padding: auto;
+}
+
+.connexion_input {
+    width: 30em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+label {
+    margin: 1em;
 }
