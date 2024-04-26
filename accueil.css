@@ -148,7 +148,7 @@ h2 {
 .favoris {
   width: 50px;
 }
-.bouton-fav {
+.bouton_fav {
   background-color: transparent;
   /* border: none; */
   opacity: 0.5;

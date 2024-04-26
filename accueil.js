@@ -14,10 +14,10 @@ function createCard(data) {
     <h3>${data["original_title"]}</h3>
     <p>Langue originale: ${data["original_language"]}</p>
     <p>${data["overview"]}</p>
-    <button class="bouton-fav"> <img class="favoris" src= "images/logo_popcorn.png"> </button>
+    <button class="bouton_fav"> <img class="favoris" src= "images/logo_popcorn.png"> </button>
   </div>
   `;
-  const favorisButton = card.querySelector(".bouton-fav"); // Sélectionner le bouton favoris
+  const favorisButton = card.querySelector(".bouton_fav"); // Sélectionner le bouton favoris
 
   favorisButton.classList.add("favoris-inactif"); // Ajouter la classe "favoris-inactif" par défaut
 
@@ -37,11 +37,21 @@ function createCard(data) {
 }
 
 // Fonction pour enregistrer un film dans le stockage local
+// Fonction pour enregistrer un film dans le stockage local
 function saveFavoriteMoviesToLocalStorage(movieData) {
   let favoriteMovies = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
-  if (!favoriteMovies.includes(movieData.id)) {
+
+  const index = favoriteMovies.indexOf(movieData.id); // Vérifier si l'ID du film est déjà dans le tableau des favoris
+
+  if (index === -1) {
+    // Si l'ID n'est pas trouvé dans le tableau, ajoutez-le
     favoriteMovies.push(movieData.id);
+  } else {
+    // Si l'ID est déjà présent dans le tableau, retirez-le
+    favoriteMovies = favoriteMovies.filter((id) => id !== movieData.id);
   }
+
+  // Mettez à jour le stockage local avec le tableau des favoris modifié
   localStorage.setItem("favoriteMovies", JSON.stringify(favoriteMovies));
 }
 
@@ -54,7 +64,7 @@ function displayCards(movies) {
 async function fetchApi() {
   const apiKey = "8c4b867188ee47a1d4e40854b27391ec";
 
-  const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}`;
+  const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
 
   const res = await fetch(url);
   const resData = await res.json();
@@ -80,6 +90,7 @@ function createSeriesCard(data) {
   <h3>${data["name"]}</h3>
   <p>Langue originale: ${data["original_language"]}</p>
   <p>${data["overview"]}</p>
+  <button class="bouton_fav"> <img class="favoris" src= "images/logo_popcorn.png"> </button>
 </div>
 `;
   // Ajoute la carte à la galerie de cartes des séries
@@ -88,7 +99,7 @@ function createSeriesCard(data) {
 
 async function fetchSeries() {
   const apiKey = "8c4b867188ee47a1d4e40854b27391ec";
-  const url = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}`;
+  const url = `https://api.themoviedb.org/3/tv/top_rated?api_key=${apiKey}`;
 
   const res = await fetch(url);
   const resData = await res.json();

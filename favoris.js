@@ -35,8 +35,25 @@ function createCard(data) {
     <h3>${data["original_title"]}</h3>
     <p>Langue originale: ${data["original_language"]}</p>
     <p>${data["overview"]}</p>
+    <button class="bouton_fav"> <img class="favoris" src= "images/logo_popcorn.png"> </button>
   </div>
   `;
 
-  document.getElementById("favoris").appendChild(card); // Ajoutez la carte à la div "favoris"
+  const favorisButton = card.querySelector(".bouton_fav"); // Sélectionner le bouton favoris
+
+  favorisButton.classList.add("favoris-active"); // Ajouter la classe "favoris-active" par défaut
+
+  favorisButton.addEventListener("click", function () {
+    const movieId = data.id;
+    removeFavoriteMovieFromLocalStorage(movieId); // Supprimer le film du stockage local
+    card.remove(); // Supprimer la carte du DOM
+  });
+
+  document.getElementById("favoris").appendChild(card); // Ajouter la carte à la div "favoris"
+}
+
+function removeFavoriteMovieFromLocalStorage(movieId) {
+  let favoriteMovies = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
+  favoriteMovies = favoriteMovies.filter((id) => id !== movieId); // Filtrer pour retirer l'ID du film du tableau des favoris
+  localStorage.setItem("favoriteMovies", JSON.stringify(favoriteMovies)); // Mettre à jour le stockage local
 }
