@@ -23,14 +23,20 @@
     <main class="main">
       <section class="containers">
         <div>
-          <h1 class="titre__h1">Notre séléction de films</h1>
-          <div class="card__gallery" id="card-gallery"></div>
-        </div>
-        <div>
-          <h1 class="titre__h1"> Notre sélection de séries</h1>
-          <div class="card__series" id="card-series"></div>
+          <h1 class="titre__h1">Nos films</h1>
+
+          <div class="form-container">
+            <form class="form">
+                <input id="input_film" type="text" class="input" placeholder="search..."/>
+            </form>
+          </div>
+
+          <div class="card__gallery" id="card-gallery-films"></div>
         </div>
       </section>
+      <button id="btn_moins">-</button>
+      <button id="btn_actuel">x</button>
+      <button id="btn_plus">+</button>
     </main>
     <footer>
       <div class="footer">
@@ -43,7 +49,7 @@
       
       <div class="row">
       <ul>
-        <li> <a class="liens" href="lien-de-votre-page"><img class="logoAccueil" src="/images/logo_cinetech_2.png" alt="connexion"></a></li>
+        <li> <a class="liens" href="accueil.html"><img class="logoAccueil" src="/images/logo_cinetech_2.png" alt="connexion"></a></li>
       <li><a class="liens" href="#">Films</a></li>
       <li><a class="liens" href="#"> Séries</a></li>
       <li><a class="liens" href="#"> Favoris</a></li>
@@ -57,5 +63,5 @@
       </div>
       </footer>
   </body>
-  <script src="accueil.js"></script>
+  <script src="films.js"></script>
 </html>

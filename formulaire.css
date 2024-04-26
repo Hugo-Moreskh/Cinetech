@@ -23,6 +23,9 @@ body {
 }
 
 #login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: #303030;
     color: white;
     width: 800px;
@@ -41,8 +44,8 @@ body {
     color: white;
     cursor: pointer;
     background-color: #F68922;
-    border-radius: 10px;
-    width: auto;
+    border-radius: 3em;
+    width: 20%;
 }
 
 #email {
@@ -78,8 +81,28 @@ body {
 }
 
 .input-group {
+    width: 20em;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin-bottom: 30px;
+}
+
+.login {
+    justify-content: center;
+    margin: auto;
+    padding: auto;
+}
+
+.connexion_input {
+    width: 30em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+label {
+    margin: 1em;
 }
