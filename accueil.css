@@ -358,8 +358,12 @@ h2 {
   transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
 
-/* #input_film:focus {
-  border: none;
-  border-color: red;
-  box-shadow: none;
-} */
+/********************************DETAILS**************************************************************/
+
+#detail_main {
+  height: 60vh;
+}
+
+#detail_main #container {
+  display: flex;
+}
