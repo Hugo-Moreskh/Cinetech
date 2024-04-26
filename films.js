@@ -1,15 +1,22 @@
 // Récupère les éléments du DOM
 const divContainer = document.getElementById("card-gallery-films");
-const btn_moins = document.getElementById("btn_moins");
-const btn_plus = document.getElementById("btn_plus");
 const input = document.getElementById("input_film");
 
+const btn_moins = document.getElementById("btn_moins");
+const btn_plus = document.getElementById("btn_plus");
+const btn_actuel = document.getElementById("btn_actuel")
+
 let pageNumber = 1; // Numéro de la page souhaitée
+
+btn_actuel.textContent = pageNumber;
+
 
 // Écouteur d'événement pour le bouton "Plus"
 btn_plus.addEventListener("click", function () {
     pageNumber++;
     fetchAndDisplayMovies(pageNumber);
+    btn_actuel.textContent = pageNumber;
+
 });
 
 // Écouteur d'événement pour le bouton "Moins"
@@ -17,8 +24,11 @@ btn_moins.addEventListener("click", function () {
     if (pageNumber > 1) {
         pageNumber--;
         fetchAndDisplayMovies(pageNumber);
+        btn_actuel.textContent = pageNumber;
+
     }
 });
+
 
 // Fonction pour récupérer et afficher les films en fonction du numéro de page
 async function fetchAndDisplayMovies(pageNumber) {
