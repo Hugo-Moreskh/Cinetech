@@ -23,7 +23,12 @@ btn_plus.addEventListener("click", function () {
 btn_moins.addEventListener("click", function () {
     if (pageNumber > 1) {
         pageNumber--;
-        fetchAndDisplayMovies(pageNumber);
+        if (input.contains != ""){
+            searchMovie(input)
+        } else {
+            fetchAndDisplayMovies(pageNumber);
+
+        }
         btn_actuel.textContent = pageNumber;
 
     }
@@ -94,7 +99,7 @@ async function searchMovie (input) {
     if (input.length >= 1)
     { 
     const apiKey = 'e4e579c63025eb13c4c8457b41c2ced2';
-    const url = `https://api.themoviedb.org/3/search/movie?query=${searchTerm}&include_adult=false&language=fr&page=1&api_key=${apiKey}`;
+    const url = `https://api.themoviedb.org/3/search/movie?query=${searchTerm}&include_adult=false&language=fr&page=${pageNumber}&api_key=${apiKey}`;
 
     const res = await fetch(url);
     const resData = await res.json();
@@ -105,6 +110,9 @@ async function searchMovie (input) {
 
 
     movies.forEach(movie => {
+
+        if (movie.poster_path)
+        { 
 
         const card = document.createElement("div");
             card.classList.add("card");
@@ -137,6 +145,7 @@ async function searchMovie (input) {
             details.appendChild(details_overview);
 
             card.appendChild(details);
+        }
         
     });
 } else {
