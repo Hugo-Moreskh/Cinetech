@@ -5,11 +5,11 @@ const cardGallery = document.getElementById("card-gallery");
 
 function createCard(data) {
   const card = document.createElement("div");
-  if (movie.backdrop_path) {
-    card.classList.add("card"); // Ajout de la classe "card" à chaque carte
-    card.innerHTML = `
-    <img src="https://image.tmdb.org/t/p/w400${data["backdrop_path"]}" >
-    <h2>${data["original_title"]}</h2>
+
+  card.classList.add("card"); // Ajout de la classe "card" à chaque carte
+  card.innerHTML = `
+    <img src="https://image.tmdb.org/t/p/w300${data["poster_path"]}" >
+    
     <div class="details">
     <h3>${data["original_title"]}</h3>
     <p>Langue originale: ${data["original_language"]}</p>
@@ -17,8 +17,7 @@ function createCard(data) {
     <button class="bouton-fav"> <img class="favoris" src= "images/logo_popcorn.png"> </button>
   </div>
   `;
-    cardGallery.appendChild(card);
-  }
+  cardGallery.appendChild(card);
 }
 
 function displayCards(movies) {
@@ -49,10 +48,10 @@ function createSeriesCard(data) {
 
   // Crée une image pour chaque carte
   const image = document.createElement("img");
-  image.src = `https://image.tmdb.org/t/p/w400${data["backdrop_path"]}`;
+  image.src = `https://image.tmdb.org/t/p/w300${data["poster_path"]}`;
   card.innerHTML = `
-  <img src="https://image.tmdb.org/t/p/w400${data["backdrop_path"]}" >
-  <h2>${data["name"]}</h2>
+  <img src="https://image.tmdb.org/t/p/w300${data["poster_path"]}" >
+  
   <div class="details">
   <h3>${data["name"]}</h3>
   <p>Langue originale: ${data["original_language"]}</p>
