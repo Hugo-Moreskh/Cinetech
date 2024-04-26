@@ -1,6 +1,6 @@
 let movie;
 let serie;
-
+//******************************** FILMS********************************/ */
 const cardGallery = document.getElementById("card-gallery");
 
 function createCard(data) {
@@ -36,7 +36,6 @@ function createCard(data) {
   cardGallery.appendChild(card);
 }
 
-// Fonction pour enregistrer un film dans le stockage local
 // Fonction pour enregistrer un film dans le stockage local
 function saveFavoriteMoviesToLocalStorage(movieData) {
   let favoriteMovies = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
@@ -75,6 +74,8 @@ async function fetchApi() {
 
 fetchApi();
 
+///***************************SERIES ***************************************/
+
 const cardSeries = document.getElementById("card-series");
 
 function createSeriesCard(data) {
@@ -93,8 +94,47 @@ function createSeriesCard(data) {
   <button class="bouton_fav"> <img class="favoris" src= "images/logo_popcorn.png"> </button>
 </div>
 `;
+  const favorisButton = card.querySelector(".bouton_fav"); // Sélectionner le bouton favoris
+
+  favorisButton.classList.add("favoris-inactif"); // Ajouter la classe "favoris-inactif" par défaut
+
+  const favoriteSeries =
+    JSON.parse(localStorage.getItem("favoriteSeries")) || [];
+  if (favoriteSeries.includes(data.id)) {
+    favorisButton.classList.add("favoris-active"); // Ajouter la classe "favoris-active" si l'ID du film est présent dans le stockage local
+  }
+
+  favorisButton.addEventListener("click", function () {
+    favorisButton.classList.toggle("favoris-inactif");
+    favorisButton.classList.toggle("favoris-active");
+    saveFavoriteSeriesToLocalStorage(data); // Appeler la fonction pour enregistrer le film dans le stockage local
+    console.log("Bouton favoris cliqué");
+  });
   // Ajoute la carte à la galerie de cartes des séries
   cardSeries.appendChild(card);
+}
+// Fonction pour enregistrer un film dans le stockage local
+function saveFavoriteSeriesToLocalStorage(serieData) {
+  let favoriteSeries = JSON.parse(localStorage.getItem("favoriteSeries")) || [];
+
+  const index = favoriteSeries.indexOf(serieData.id); // Vérifier si l'ID du film est déjà dans le tableau des favoris
+
+  if (index === -1) {
+    // Si l'ID n'est pas trouvé dans le tableau, ajoutez-le
+    favoriteSeries.push(serieData.id);
+  } else {
+    // Si l'ID est déjà présent dans le tableau, retirez-le
+    favoriteSeries = favoriteSeries.filter((id) => id !== serieData.id);
+  }
+
+  // Mettez à jour le stockage local avec le tableau des favoris modifié
+  localStorage.setItem("favoriteSeries", JSON.stringify(favoriteSeries));
+}
+
+function displaySeriesCards(series) {
+  for (const serie of series) {
+    createSeriesCard(serie);
+  }
 }
 
 async function fetchSeries() {
@@ -106,12 +146,6 @@ async function fetchSeries() {
   serie = resData;
   console.log(serie);
   displaySeriesCards(serie.results);
-}
-
-function displaySeriesCards(series) {
-  for (const serie of series) {
-    createSeriesCard(serie);
-  }
 }
 
 fetchSeries();
