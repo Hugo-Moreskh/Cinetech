@@ -110,3 +110,37 @@ h2 {
   background-color: lightgray;
   border-radius: 15px;
 }
+.card:hover {
+  transform: scale(1.1);
+}
+.card:hover .details {
+  display: block;
+}
+
+.details {
+  display: none;
+  position: absolute;
+  top: 0; /* Position à partir du haut de la carte parente */
+  left: 0;
+  width: 90%;
+  height: 66%; /* Position à partir de la gauche de la carte parente */
+  /* Fait correspondre la hauteur à celle de la carte parente */
+  transform: translate(5%, 6%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  z-index: 1;
+}
+.card {
+  /* border: black solid 4px; */
+  width: max-content;
+  cursor: pointer;
+  padding-top: 4vh;
+  padding-right: 2vw;
+  padding-left: 2vw;
+  position: relative;
+}
+#favoris {
+  display: flex;
+}
