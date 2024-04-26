@@ -70,8 +70,10 @@ async function fetchAndDisplayMovies(pageNumber) {
             details.appendChild(details_overview);
 
             card.appendChild(details);
-            }
-            //console.log(movie)
+            card.addEventListener('click', () => {
+                window.location.href = `detail.html?id=${movie.id}`;
+            });            }
+            console.log(movie)
     });
 }
 
@@ -88,7 +90,6 @@ async function searchMovie (input) {
     const resData = await res.json();
     const movies = resData.results;
 
-    console.log(movies)
 
     divContainer.innerHTML=""
 
