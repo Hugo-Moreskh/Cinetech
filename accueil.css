@@ -371,7 +371,7 @@ h2 {
 }
 
 #text_container_detail {
-  width: 50vw;
+  width: 40vw;
   padding: 5%;
 }
 
@@ -380,8 +380,8 @@ h2 {
 }
 
 #text_container_detail p {
-  font-size: large;
- color: #ffffff;
+  font-size: larger;
+  color: #ffffff;
 }
 
 #image_container_detail {
@@ -394,7 +394,7 @@ h2 {
 
 #image_container_detail img {
   border-radius: 10px;
-  width: 20vw;
+  width: 25vw;
 }
 
 
