@@ -150,12 +150,14 @@ h2 {
 }
 .bouton-fav {
   background-color: transparent;
-  border: none;
+  /* border: none; */
   opacity: 0.5;
 }
-.bouton-fav.active {
-  opacity: 1; /* Opacité à 100% lorsque le bouton est actif */
-  /* Autres styles CSS pour votre bouton actif */
+.favoris-inactif {
+  opacity: 0.5;
+}
+.favoris-active {
+  opacity: 1;
 }
 /*******************************FOOTER******************************/
 .footer {

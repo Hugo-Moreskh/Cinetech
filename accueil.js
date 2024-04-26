@@ -17,7 +17,32 @@ function createCard(data) {
     <button class="bouton-fav"> <img class="favoris" src= "images/logo_popcorn.png"> </button>
   </div>
   `;
+  const favorisButton = card.querySelector(".bouton-fav"); // Sélectionner le bouton favoris
+
+  favorisButton.classList.add("favoris-inactif"); // Ajouter la classe "favoris-inactif" par défaut
+
+  const favoriteMovies =
+    JSON.parse(localStorage.getItem("favoriteMovies")) || [];
+  if (favoriteMovies.includes(data.id)) {
+    favorisButton.classList.add("favoris-active"); // Ajouter la classe "favoris-active" si l'ID du film est présent dans le stockage local
+  }
+
+  favorisButton.addEventListener("click", function () {
+    favorisButton.classList.toggle("favoris-inactif");
+    favorisButton.classList.toggle("favoris-active");
+    saveFavoriteMoviesToLocalStorage(data); // Appeler la fonction pour enregistrer le film dans le stockage local
+    console.log("Bouton favoris cliqué");
+  });
   cardGallery.appendChild(card);
+}
+
+// Fonction pour enregistrer un film dans le stockage local
+function saveFavoriteMoviesToLocalStorage(movieData) {
+  let favoriteMovies = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
+  if (!favoriteMovies.includes(movieData.id)) {
+    favoriteMovies.push(movieData.id);
+  }
+  localStorage.setItem("favoriteMovies", JSON.stringify(favoriteMovies));
 }
 
 function displayCards(movies) {
@@ -51,7 +76,6 @@ function createSeriesCard(data) {
   image.src = `https://image.tmdb.org/t/p/w300${data["poster_path"]}`;
   card.innerHTML = `
   <img src="https://image.tmdb.org/t/p/w300${data["poster_path"]}" >
-  
   <div class="details">
   <h3>${data["name"]}</h3>
   <p>Langue originale: ${data["original_language"]}</p>
@@ -80,27 +104,3 @@ function displaySeriesCards(series) {
 }
 
 fetchSeries();
-
-// function favorisButton() {
-//   const favButton = document.getElementsByClassName("bouton-fav");
-
-//   // Ajoute un écouteur d'événements pour détecter les clics sur le bouton
-//   favButton.addEventListener("click", function () {
-//     console.log("test");
-//     // Vérifie si le bouton a la classe "active"
-//     // const isActive = favButton.classList.contains("active");
-
-//     // Si le bouton est déjà actif, on le désactive
-//     // if (isActive) {
-//     //   favButton.classList.remove("active");
-//     //   favButton.style.opacity = "0.5"; // Opacity à 50%
-//     // } else {
-//     //   // Sinon, on l'active
-//     //   favButton.classList.add("active");
-//     //   favButton.style.opacity = "1"; // Opacity à 100%
-//     // }
-//   });
-// }
-
-// // Appel de la fonction pour initialiser le comportement du bouton favoris
-// favorisButton();

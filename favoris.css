@@ -1,0 +1,97 @@
+.montserrat-alternates-bold {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.montserrat-alternates-extrabold {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.montserrat-alternates-medium-italic {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+.patrick-hand-regular {
+  font-family: "Patrick Hand", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/******************************** HEADER******************/
+.navigation {
+  list-style-type: none;
+  margin: 0;
+  width: 98%;
+
+  overflow: hidden;
+  background-color: #fecc00;
+  display: flex;
+  justify-content: space-around;
+}
+
+li {
+  float: left;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: larger;
+}
+
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  text-decoration: underline;
+}
+
+.navigation {
+  display: flex;
+  align-items: center; /* Alignement vertical des éléments */
+}
+
+.search-bar {
+  margin-left: 25%; /* Place le groupe de recherche et le bouton à droite */
+}
+
+body {
+  margin: 0;
+  background-color: #303030;
+}
+.logoAccueil {
+  width: 60px;
+  height: 60px;
+}
+.logo {
+  width: 60px;
+  height: 60px;
+  border-left: 1px solid black; /* Couleur et épaisseur de la bordure */
+  padding-left: 5px; /* Espace entre l'image et la bordure */
+}
+
+/**************************MAIN********************************/
+
+h2 {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: large;
+}
+.titre__h1 {
+  font-size: 2rem;
+  color: white;
+  margin: 0;
+  margin-top: 30px;
+  margin-left: 25px;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
