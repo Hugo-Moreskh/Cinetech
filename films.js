@@ -48,7 +48,6 @@ async function fetchAndDisplayMovies(pageNumber) {
         divContainer.innerHTML = '';
         // console.log(resData)
 
-        // Affiche les titres des films
         movies.forEach(movie => {
 
             // card.appendChild(title);
@@ -57,8 +56,6 @@ async function fetchAndDisplayMovies(pageNumber) {
             const card = document.createElement("div");
             card.classList.add("card");
 
-            // const title = document.createElement("h2");
-            // title.textContent = movie.title;
 
             const image = document.createElement("img");
             image.src = `https://image.tmdb.org/t/p/w400${movie["poster_path"]}`;
@@ -84,10 +81,13 @@ async function fetchAndDisplayMovies(pageNumber) {
             details.appendChild(details_VO);
             details.appendChild(details_overview);
 
+            
+
             card.appendChild(details);
             card.addEventListener('click', () => {
                 window.location.href = `detail.html?id=${movie.id}`;
-            });            }
+            });            
+        }
             console.log(movie)
     });
 }

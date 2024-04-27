@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cinetech</title>
-    <link rel="stylesheet" href="accueil.css" />
+    <link rel="stylesheet" href="series.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,16 +23,22 @@
     <main class="main">
       <section class="containers">
         <div>
-          <h1 class="titre__h1">Nos series</h1>
+          <h1 class="titre__h1">Nos Séries</h1>
+
+          <div class="search-box">
+
+            <button class="btn-search"><i class="fa fa-search" aria-hidden="true"></i></button>
+            <input type="text" class="input-search" placeholder="Type to Search..." id="input_film">
+          </div>
+
           <div class="card__gallery" id="card-gallery-films"></div>
         </div>
-        <div id="btn">
-          <button id="btn_moins"><</button>
-          <button id="btn_actuel"></button>
-          <button id="btn_plus">></button>
-        </div>
       </section>
-
+      <div id="btn">
+        <button id="btn_moins"><</button>
+        <button id="btn_actuel"></button>
+        <button id="btn_plus">></button>
+      </div>
     </main>
     <footer>
       <div class="footer">

@@ -1,0 +1,273 @@
+/******************************** HEADER******************/
+.navigation {
+    list-style-type: none;
+    margin: 0;
+    width: 100%;
+  
+    overflow: hidden;
+    background-color: #fecc00;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  li {
+    float: left;
+    font-family: "Montserrat Alternates", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: larger;
+  }
+  
+  li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover:not(.active) {
+    text-decoration: underline;
+  }
+  
+  .navigation {
+    display: flex;
+    align-items: center; /* Alignement vertical des éléments */
+  }
+  
+  .search-bar {
+    margin-left: 25%; /* Place le groupe de recherche et le bouton à droite */
+  }
+  
+  body {
+    margin: 0;
+    background-color: #303030;
+  }
+  .logoAccueil {
+    width: 60px;
+    height: 60px;
+  }
+  .logo {
+    width: 60px;
+    height: 60px;
+    /* padding-left: 5px; Espace entre l'image et la bordure */
+  }
+
+/*******************************PAGE FILMS******************************/
+
+.titre__h1 {
+    font-size: 2rem;
+    color: white;
+    margin: 0;
+    margin-top: 30px;
+    margin-left: 25px;
+    font-family: "Montserrat Alternates", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+#card-gallery-films {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  #btn_moins, #btn_plus, #btn_actuel {
+      background-color: #303030;
+      border: 1px solid #303030;
+      color: #eee;
+  }
+  
+  #btn_moins:hover, #btn_plus:hover, #btn_actuel:hover{
+    background-color: #191919;
+    border-radius: 10px;
+  }
+  
+  #btn_moins:active, #btn_plus:active, #btn_actuel:active {
+    background-color:#303030 ;
+  }
+  
+  .details_films {
+    padding: 5%;
+    display: none;
+    position: absolute;
+    height: 99%;
+    width: 100%;
+     top: 0;
+    left: 0;
+    justify-content: center; /* Alignement horizontal au centre */
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    z-index: 1;
+  }
+  
+  .details_films p {
+    text-align: justify;
+  }
+
+  .details h2 {
+    font-weight: bold;
+    color: #fecc00;
+  }
+  
+  .card {
+    margin: 2vh;
+    border:solid #fecc00;
+    position: relative;
+    background-color: #fecc00;
+    overflow: hidden;
+    width: 20%;
+    height: 25%;
+  }
+  
+  
+  .card:hover .details_films {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;  
+  }
+  
+  .card img {
+    width: 36vh;
+    height: 50vh;
+  }
+  
+  #btn {
+    display: flex;
+    width: 98%;
+    justify-content: center;
+    margin: 1%;
+  }
+  
+  #btn_moins, #btn_plus, #btn_actuel {
+    font-size: 1em;
+  
+  }
+  
+  *{
+    box-sizing: border-box;
+  }
+  
+  .search-box{
+    display: flex;
+    align-items: center;
+    vertical-align:middle;
+    margin: 3vh;
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+  }
+  
+  .search-box:h1.titre__h1 {
+    align-self: center;
+  
+  }
+  
+  .input-search{
+    height: 50px;
+    width: 50px;
+    border-style: none;
+    padding: 10px;
+    font-size: 18px;
+    letter-spacing: 2px;
+    outline: none;
+    border-radius: 25vh;
+    transition: all .5s ease-in-out;
+    background-color: #22a6b3;
+    padding-right: 40px;
+    color:#fff;
+  }
+  .input-search::placeholder{
+    color:rgba(255,255,255,.5);
+    font-size: 18px;
+    letter-spacing: 2px;
+    font-weight: 100;
+  }
+  .btn-search{
+    width: 50px;
+    height: 50px;
+    border-style: none;
+    font-size: 20px;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50%;
+    position: absolute;
+    right: 0px;
+    color:#ffffff ;
+    background-color:transparent;
+    pointer-events: painted;  
+  }
+  .btn-search:focus ~ .input-search{
+    width: 300px;
+    border-radius: 0px;
+    background-color: transparent;
+    border-bottom:1px solid rgba(255,255,255,.5);
+    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+  }
+  .input-search:focus{
+    width: 300px;
+    border-radius: 0px;
+    background-color: transparent;
+    border-bottom:1px solid rgba(255,255,255,.5);
+    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+  }
+  
+
+ .footer {
+    background: black;
+    padding: 30px 0px;
+    font-family: "Play", sans-serif;
+    text-align: center;
+  }
+  
+  .footer .row {
+    width: 100%;
+    margin: 1% 0%;
+    padding: 0.6% 0%;
+    color: gray;
+    font-size: 0.8em;
+  }
+  
+  .footer .row a {
+    text-decoration: none;
+    color: gray;
+    transition: 0.5s;
+  }
+  
+  .footer .row .liens:hover {
+    color: #fff;
+    background-color: #fecc00;
+  }
+  
+  .footer .row ul {
+    width: 90%;
+  }
+  
+  .footer .row ul li {
+    display: inline-block;
+    margin: 0px 30px;
+  }
+  
+  .footer .row a i {
+    font-size: 2em;
+    margin: 0% 1%;
+  }
+  
+  @media (max-width: 720px) {
+    .footer {
+      text-align: left;
+      padding: 5%;
+    }
+    .footer .row ul li {
+      display: block;
+      margin: 10px 0px;
+      text-align: left;
+    }
+    .footer .row a i {
+      margin: 0% 3%;
+    }
+  }
+  
+  

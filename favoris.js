@@ -91,7 +91,7 @@ async function fetchSerieData(serieId) {
 function createSeriesCard(data) {
   const card_serie = document.createElement("div");
 
-  card_serie.classList.add("card_serie"); // Ajout de la classe "card" à chaque carte
+  card_serie.classList.add("card"); // Ajout de la classe "card" à chaque carte
   card_serie.innerHTML = `
     <img src="https://image.tmdb.org/t/p/w300${data["poster_path"]}" >
     <div class="details">
