@@ -1,31 +1,8 @@
-.montserrat-alternates-bold {
-  font-family: "Montserrat Alternates", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.montserrat-alternates-extrabold {
-  font-family: "Montserrat Alternates", sans-serif;
-  font-weight: 800;
-  font-style: normal;
-}
-
-.montserrat-alternates-medium-italic {
-  font-family: "Montserrat Alternates", sans-serif;
-  font-weight: 500;
-  font-style: italic;
-}
-.patrick-hand-regular {
-  font-family: "Patrick Hand", cursive;
-  font-weight: 400;
-  font-style: normal;
-}
-
 /******************************** HEADER******************/
 .navigation {
   list-style-type: none;
   margin: 0;
-  width: 98%;
+  width: 100%;
 
   overflow: hidden;
   background-color: #fecc00;
@@ -73,23 +50,14 @@ body {
 .logo {
   width: 60px;
   height: 60px;
-  border-left: 1px solid black; /* Couleur et épaisseur de la bordure */
-  padding-left: 5px; /* Espace entre l'image et la bordure */
+  /* padding-left: 5px; Espace entre l'image et la bordure */
 }
 
-/**************************MAIN********************************/
+/*******************************PAGE FILMS******************************/
 
-h2 {
-  font-family: "Montserrat Alternates", sans-serif;
-  font-weight: 500;
-  font-style: italic;
-  font-size: large;
+.titre__h1 {
+  font-size: 2rem;
   color: white;
-  font-size: 3rem;
-}
-.titre__fav {
-  font-size: 4rem;
-  color: #fecc00;
   margin: 0;
   margin-top: 30px;
   margin-left: 25px;
@@ -97,29 +65,34 @@ h2 {
   font-weight: 700;
   font-style: normal;
 }
-.logo-fav {
-  width: 100px;
-  height: 100px;
-  padding-left: 20px;
-  padding-top: 15px;
-}
-.favoris_titre {
+
+#card-gallery-films {
   display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
-.barre_favoris {
-  width: 500px;
-  height: 50px;
-  background-color: lightgray;
-  border-radius: 50px;
-  font-family: "Montserrat Alternates", sans-serif;
-  font-weight: 500;
-  font-style: italic;
+
+#btn_moins, #btn_plus, #btn_actuel {
+    background-color: #303030;
+    border: 1px solid #303030;
+    color: #eee;
 }
-.details {
+
+#btn_moins:hover, #btn_plus:hover, #btn_actuel:hover{
+  background-color: #191919;
+  border-radius: 10px;
+}
+
+#btn_moins:active, #btn_plus:active, #btn_actuel:active {
+  background-color:#303030 ;
+}
+
+.details_films {
+  cursor: pointer;
   padding: 5%;
   display: none;
   position: absolute;
-  height: 99%;
+  height: 100%;
   width: 100%;
    top: 0;
   left: 0;
@@ -130,64 +103,119 @@ h2 {
   z-index: 1;
 }
 
-.details p {
+.details_films p {
   text-align: justify;
-  width: 90%;
 }
 
-.details h3 {
+.details h2 {
   font-weight: bold;
   color: #fecc00;
 }
 
 .card {
   margin: 2vh;
-  width: 20vw;
   border:solid #fecc00;
   position: relative;
   background-color: #fecc00;
   overflow: hidden;
+  width: 20%;
+  height: 25%;
 }
 
 
-.card:hover .details {
+.card:hover .details_films {
   display: flex;
   flex-direction: column;
   overflow: hidden;  
 }
 
-/* .card img {
-  /* width: 36vh;
-  height: 50vh; 
-} */
-
-#favorisFilms {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-#favorisSeries {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+.card img {
+  width: 36vh;
+  height: 50vh;
 }
 
-.favoris {
+#btn {
+  display: flex;
+  width: 98%;
+  justify-content: center;
+  margin: 1%;
+}
+
+#btn_moins, #btn_plus, #btn_actuel {
+  font-size: 1em;
+
+}
+
+*{
+  box-sizing: border-box;
+}
+
+.search-box{
+  display: flex;
+  align-items: center;
+  vertical-align:middle;
+  margin: 3vh;
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+
+.search-box:h1.titre__h1 {
+  align-self: center;
+
+}
+
+.input-search{
+  height: 50px;
   width: 50px;
+  border-style: none;
+  padding: 10px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 25vh;
+  transition: all .5s ease-in-out;
+  background-color: #22a6b3;
+  padding-right: 40px;
+  color:#fff;
 }
-.bouton_fav {
+.input-search::placeholder{
+  color:rgba(255,255,255,.5);
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+.btn-search{
+  width: 50px;
+  height: 50px;
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  color:#ffffff ;
+  background-color:transparent;
+  pointer-events: painted;  
+}
+.btn-search:focus ~ .input-search{
+  width: 300px;
+  border-radius: 0px;
   background-color: transparent;
-  border: none;
-  opacity: 0.5;
+  border-bottom:1px solid rgba(255,255,255,.5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
-.favoris-inactif {
-  opacity: 0.5;
-}
-.favoris-active {
-  opacity: 1;
+.input-search:focus{
+  width: 300px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom:1px solid rgba(255,255,255,.5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
 
-/*******************************FOOTER******************************/
+
 .footer {
   background: black;
   padding: 30px 0px;
@@ -242,3 +270,4 @@ h2 {
     margin: 0% 3%;
   }
 }
+

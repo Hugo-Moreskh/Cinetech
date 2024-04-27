@@ -3,37 +3,109 @@ let serie;
 //******************************** FILMS********************************/ */
 const cardGallery = document.getElementById("card-gallery");
 
-function createCard(data) {
-  const card = document.createElement("div");
+async function fetchApi() {
+  const apiKey = "8c4b867188ee47a1d4e40854b27391ec";
 
-  card.classList.add("card"); // Ajout de la classe "card" à chaque carte
-  card.innerHTML = `
-    <img src="https://image.tmdb.org/t/p/w300${data["poster_path"]}" >
-    
-    <div class="details">
-    <h3>${data["original_title"]}</h3>
-    <p>Langue originale: ${data["original_language"]}</p>
-    <p>${data["overview"]}</p>
-    <button class="bouton_fav"> <img class="favoris" src= "images/logo_popcorn.png"> </button>
-  </div>
-  `;
-  const favorisButton = card.querySelector(".bouton_fav"); // Sélectionner le bouton favoris
+  const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
 
-  favorisButton.classList.add("favoris-inactif"); // Ajouter la classe "favoris-inactif" par défaut
+  const res = await fetch(url);
+  const resData = await res.json();
+  return movie = resData;
+}
 
-  const favoriteMovies =
+async function fetchSerieApi() {
+  const apiKey = "8c4b867188ee47a1d4e40854b27391ec";
+
+  const url = `https://api.themoviedb.org/3/tv/top_rated?api_key=${apiKey}`;
+
+  const res = await fetch(url);
+  const resData = await res.json();
+  return movie = resData;
+}
+
+async function createMovieCard() {
+
+  const fetchMovies = await fetchApi();
+  const movies = fetchMovies.results;
+  const containerMovie = document.getElementById("card-gallery")
+
+  movies.forEach(movie => {
+
+    const card = document.createElement("div");
+    card.classList.add("card");
+  
+  
+    const image = document.createElement("img");
+    image.src = `https://image.tmdb.org/t/p/w400${movie["poster_path"]}`;
+    image.classList.add("poster")
+    card.appendChild(image);
+  
+    containerMovie.appendChild(card);
+  
+    const details = document.createElement("div");
+    details.classList.add("details")
+  
+    const details_title = document.createElement("h2");
+    details_title.textContent = movie.title
+  
+    const details_VO = document.createElement("h3");
+    details_VO.textContent = movie.original_language;
+  
+    const details_overview = document.createElement("p");
+    details_overview.textContent = movie.overview;
+
+    const favorisButton = document.createElement("button");
+    favorisButton.classList.add("bouton_fav")
+
+    const imgButton = document.createElement("img");
+    imgButton.src="images/logo_popcorn.png"
+    imgButton.classList.add("favoris")
+
+    const favoriteMovies =
     JSON.parse(localStorage.getItem("favoriteMovies")) || [];
-  if (favoriteMovies.includes(data.id)) {
+  if (favoriteMovies.includes(movie.id)) {
     favorisButton.classList.add("favoris-active"); // Ajouter la classe "favoris-active" si l'ID du film est présent dans le stockage local
   }
 
-  favorisButton.addEventListener("click", function () {
-    favorisButton.classList.toggle("favoris-inactif");
-    favorisButton.classList.toggle("favoris-active");
-    saveFavoriteMoviesToLocalStorage(data); // Appeler la fonction pour enregistrer le film dans le stockage local
-    console.log("Bouton favoris cliqué");
+    favorisButton.addEventListener("click", function () {
+      favorisButton.classList.toggle("favoris-inactif");
+      favorisButton.classList.toggle("favoris-active");
+      saveFavoriteMoviesToLocalStorage(movie); // Appeler la fonction pour enregistrer le film dans le stockage local
+      console.log("Bouton favoris cliqué");
+    });
+
+    details.appendChild(details_title);
+    details.appendChild(details_VO);
+    details.appendChild(details_overview);
+    favorisButton.appendChild(imgButton);
+    details.appendChild(favorisButton)
+    card.appendChild(details)
+
+
+
+    cardGallery.appendChild(card);
+    
   });
-  cardGallery.appendChild(card);
+
+
+
+  // card.classList.add("card"); // Ajout de la classe "card" à chaque carte
+  // card.innerHTML = `
+  //   <img src="https://image.tmdb.org/t/p/w300${data["poster_path"]}" >
+    
+  //   <div class="details_films">
+  //   <h3>${data["original_title"]}</h3>
+  //   <p>Langue originale: ${data["original_language"]}</p>
+  //   <p>${data["overview"]}</p>
+
+  
+  //   <button class="bouton_fav"> <img class="favoris" src= "images/logo_popcorn.png"> </button>
+  // </div>
+  // `;
+  // const favorisButton = card.querySelector(".bouton_fav"); // Sélectionner le bouton favoris
+  // favorisButton.classList.add("favoris-inactif"); // Ajouter la classe "favoris-inactif" par défaut
+
+
 }
 
 // Fonction pour enregistrer un film dans le stockage local
@@ -54,65 +126,114 @@ function saveFavoriteMoviesToLocalStorage(movieData) {
   localStorage.setItem("favoriteMovies", JSON.stringify(favoriteMovies));
 }
 
-function displayCards(movies) {
-  for (const movie of movies) {
-    createCard(movie);
-  }
-}
-
-async function fetchApi() {
-  const apiKey = "8c4b867188ee47a1d4e40854b27391ec";
-
-  const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
-
-  const res = await fetch(url);
-  const resData = await res.json();
-  movie = resData;
-  console.log(movie);
-  displayCards(movie.results);
-}
-
-fetchApi();
 
 ///***************************SERIES ***************************************/
 
 const cardSeries = document.getElementById("card-series");
 
-function createSeriesCard(data) {
-  const card = document.createElement("div");
-  card.classList.add("card"); // Ajout de la classe "card" à chaque carte
+async function fetchSeries() {
+  const apiKey = "8c4b867188ee47a1d4e40854b27391ec";
+  const url = `https://api.themoviedb.org/3/tv/top_rated?api_key=${apiKey}`;
 
-  // Crée une image pour chaque carte
-  const image = document.createElement("img");
-  image.src = `https://image.tmdb.org/t/p/w300${data["poster_path"]}`;
-  card.innerHTML = `
-  <img src="https://image.tmdb.org/t/p/w300${data["poster_path"]}" >
-  <div class="details">
-  <h3>${data["name"]}</h3>
-  <p>Langue originale: ${data["original_language"]}</p>
-  <p>${data["overview"]}</p>
-  <button class="bouton_fav"> <img class="favoris" src= "images/logo_popcorn.png"> </button>
-</div>
-`;
-  const favorisButton = card.querySelector(".bouton_fav"); // Sélectionner le bouton favoris
-
-  favorisButton.classList.add("favoris-inactif"); // Ajouter la classe "favoris-inactif" par défaut
-
-  const favoriteSeries =
-    JSON.parse(localStorage.getItem("favoriteSeries")) || [];
-  if (favoriteSeries.includes(data.id)) {
-    favorisButton.classList.add("favoris-active"); // Ajouter la classe "favoris-active" si l'ID du film est présent dans le stockage local
-  }
-
-  favorisButton.addEventListener("click", function () {
-    favorisButton.classList.toggle("favoris-inactif");
-    favorisButton.classList.toggle("favoris-active");
-    saveFavoriteSeriesToLocalStorage(data); // Appeler la fonction pour enregistrer le film dans le stockage local
-    console.log("Bouton favoris cliqué");
-  });
-  // Ajoute la carte à la galerie de cartes des séries
-  cardSeries.appendChild(card);
+  const res = await fetch(url);
+  const resData = await res.json();
+  serie = resData;
+  console.log(serie);
+  displaySeriesCards(serie.results);
 }
+
+async function createSeriesCard() {
+
+    const fetchSeries= await fetchSerieApi();
+    const series = fetchSeries.results;
+    const containerSerie = document.getElementById("card-series")
+  
+    series.forEach(movie => {
+  
+      const card = document.createElement("div");
+      card.classList.add("card");
+    
+    
+      const image = document.createElement("img");
+      image.src = `https://image.tmdb.org/t/p/w400${movie["poster_path"]}`;
+      image.classList.add("poster")
+      card.appendChild(image);
+    
+      containerSerie.appendChild(card);
+    
+      const details = document.createElement("div");
+      details.classList.add("details")
+    
+      const details_title = document.createElement("h2");
+      details_title.textContent = movie.name;
+    
+      const details_VO = document.createElement("h3");
+      details_VO.textContent = movie.original_language;
+    
+      const details_overview = document.createElement("p");
+      details_overview.textContent = movie.overview;
+
+      const favorisButton = document.createElement("button");
+      favorisButton.classList.add("bouton_fav")
+
+      const imgButton = document.createElement("img");
+      imgButton.src="images/logo_popcorn.png"
+      imgButton.classList.add("favoris")
+  
+
+      const favoriteMovies =
+      JSON.parse(localStorage.getItem("favoriteSeries")) || [];
+    if (favoriteMovies.includes(movie.id)) {
+      favorisButton.classList.add("favoris-active"); // Ajouter la classe "favoris-active" si l'ID du film est présent dans le stockage local
+    }
+  
+      favorisButton.addEventListener("click", function () {
+        favorisButton.classList.toggle("favoris-inactif");
+        favorisButton.classList.toggle("favoris-active");
+        saveFavoriteSeriesToLocalStorage(movie); // Appeler la fonction pour enregistrer le film dans le stockage local
+        console.log("Bouton favoris cliqué");
+      });
+    
+      details.appendChild(details_title);
+      details.appendChild(details_VO);
+      details.appendChild(details_overview);
+      favorisButton.appendChild(imgButton);
+      details.appendChild(favorisButton)
+      card.appendChild(details)
+      
+    });
+  
+  
+  
+    // card.classList.add("card"); // Ajout de la classe "card" à chaque carte
+    // card.innerHTML = `
+    //   <img src="https://image.tmdb.org/t/p/w300${data["poster_path"]}" >
+      
+    //   <div class="details_films">
+    //   <h3>${data["original_title"]}</h3>
+    //   <p>Langue originale: ${data["original_language"]}</p>
+    //   <p>${data["overview"]}</p>
+    //   <button class="bouton_fav"> <img class="favoris" src= "images/logo_popcorn.png"> </button>
+    // </div>
+    // `;
+    // const favorisButton = card.querySelector(".bouton_fav"); // Sélectionner le bouton favoris
+    // favorisButton.classList.add("favoris-inactif"); // Ajouter la classe "favoris-inactif" par défaut
+  
+    // const favoriteMovies =
+    //   JSON.parse(localStorage.getItem("favoriteMovies")) || [];
+    // if (favoriteMovies.includes(data.id)) {
+    //   favorisButton.classList.add("favoris-active"); // Ajouter la classe "favoris-active" si l'ID du film est présent dans le stockage local
+    // }
+  
+    // favorisButton.addEventListener("click", function () {
+    //   favorisButton.classList.toggle("favoris-inactif");
+    //   favorisButton.classList.toggle("favoris-active");
+    //   saveFavoriteMoviesToLocalStorage(data); // Appeler la fonction pour enregistrer le film dans le stockage local
+    //   console.log("Bouton favoris cliqué");
+    // });
+    // cardGallery.appendChild(card);
+}
+  
 // Fonction pour enregistrer un film dans le stockage local
 function saveFavoriteSeriesToLocalStorage(serieData) {
   let favoriteSeries = JSON.parse(localStorage.getItem("favoriteSeries")) || [];
@@ -131,21 +252,7 @@ function saveFavoriteSeriesToLocalStorage(serieData) {
   localStorage.setItem("favoriteSeries", JSON.stringify(favoriteSeries));
 }
 
-function displaySeriesCards(series) {
-  for (const serie of series) {
-    createSeriesCard(serie);
-  }
-}
 
-async function fetchSeries() {
-  const apiKey = "8c4b867188ee47a1d4e40854b27391ec";
-  const url = `https://api.themoviedb.org/3/tv/top_rated?api_key=${apiKey}`;
 
-  const res = await fetch(url);
-  const resData = await res.json();
-  serie = resData;
-  console.log(serie);
-  displaySeriesCards(serie.results);
-}
-
-fetchSeries();
+createMovieCard();
+createSeriesCard();
