@@ -84,6 +84,8 @@ h2 {
   font-weight: 500;
   font-style: italic;
   font-size: large;
+  color: white;
+  font-size: 3rem;
 }
 .titre__fav {
   font-size: 4rem;
@@ -108,5 +110,129 @@ h2 {
   width: 500px;
   height: 50px;
   background-color: lightgray;
-  border-radius: 15px;
+  border-radius: 50px;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+.card:hover {
+  transform: scale(1.1);
+}
+.card:hover .details {
+  display: block;
+}
+
+.details {
+  display: none;
+  position: absolute;
+  top: 0; /* Position à partir du haut de la carte parente */
+  left: 0;
+  width: 90%;
+  height: 66%; /* Position à partir de la gauche de la carte parente */
+  /* Fait correspondre la hauteur à celle de la carte parente */
+  transform: translate(5%, 6%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  z-index: 1;
+}
+.card {
+  /* border: black solid 4px; */
+  width: max-content;
+  cursor: pointer;
+  padding-top: 4vh;
+  padding-right: 2vw;
+  padding-left: 2vw;
+  position: relative;
+}
+.card_serie {
+  width: max-content;
+  cursor: pointer;
+  padding-top: 4vh;
+  padding-right: 2vw;
+  padding-left: 2vw;
+  position: relative;
+}
+.card_serie:hover {
+  transform: scale(1.1);
+}
+.card_serie:hover .details {
+  display: block;
+}
+#favorisFilms {
+  display: flex;
+}
+#favorisSeries {
+  display: flex;
+}
+.favoris {
+  width: 50px;
+}
+.bouton_fav {
+  background-color: transparent;
+  /* border: none; */
+  opacity: 0.5;
+}
+.favoris-inactif {
+  opacity: 0.5;
+}
+.favoris-active {
+  opacity: 1;
+}
+
+/*******************************FOOTER******************************/
+.footer {
+  background: black;
+  padding: 30px 0px;
+  font-family: "Play", sans-serif;
+  text-align: center;
+}
+
+.footer .row {
+  width: 100%;
+  margin: 1% 0%;
+  padding: 0.6% 0%;
+  color: gray;
+  font-size: 0.8em;
+}
+
+.footer .row a {
+  text-decoration: none;
+  color: gray;
+  transition: 0.5s;
+}
+
+.footer .row .liens:hover {
+  color: #fff;
+  background-color: #fecc00;
+}
+
+.footer .row ul {
+  width: 90%;
+}
+
+.footer .row ul li {
+  display: inline-block;
+  margin: 0px 30px;
+}
+
+.footer .row a i {
+  font-size: 2em;
+  margin: 0% 1%;
+}
+
+@media (max-width: 720px) {
+  .footer {
+    text-align: left;
+    padding: 5%;
+  }
+  .footer .row ul li {
+    display: block;
+    margin: 10px 0px;
+    text-align: left;
+  }
+  .footer .row a i {
+    margin: 0% 3%;
+  }
 }
