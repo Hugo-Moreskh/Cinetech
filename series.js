@@ -38,7 +38,7 @@ btn_moins.addEventListener("click", function () {
 // Fonction pour récupérer et afficher les films en fonction du numéro de page
 async function fetchAndDisplayMovies(pageNumber) {
         const apiKey = 'e4e579c63025eb13c4c8457b41c2ced2';
-        const url = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&page=${pageNumber}`;
+        const url = `https://api.themoviedb.org/3/discover/tv?language=fr&api_key=${apiKey}&page=${pageNumber}`;
 
         const res = await fetch(url);
         const resData = await res.json();
@@ -69,7 +69,7 @@ async function fetchAndDisplayMovies(pageNumber) {
             details.classList.add("details_films")
 
             const details_title = document.createElement("h2");
-            details_title.textContent = movie.title
+            details_title.textContent = movie.name
 
             const details_VO = document.createElement("h3");
             details_VO.textContent = movie.original_language;
@@ -157,7 +157,7 @@ async function searchMovie (input) {
             details.classList.add("details_films")
 
             const details_title = document.createElement("h2");
-            details_title.textContent = movie.title
+            details_title.textContent = movie.name
 
             const details_VO = document.createElement("h3");
             details_VO.textContent = movie.original_language;
