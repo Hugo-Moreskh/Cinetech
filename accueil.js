@@ -202,6 +202,23 @@ async function createSeriesCard() {
       card.appendChild(details)
       
     });
+
+    function saveFavoriteMoviesToLocalStorage(movieData) {
+      let favoriteMovies = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
+    
+      const index = favoriteMovies.indexOf(movieData.id); // Vérifier si l'ID du film est déjà dans le tableau des favoris
+    
+      if (index === -1) {
+        // Si l'ID n'est pas trouvé dans le tableau, ajoutez-le
+        favoriteMovies.push(movieData.id);
+      } else {
+        // Si l'ID est déjà présent dans le tableau, retirez-le
+        favoriteMovies = favoriteMovies.filter((id) => id !== movieData.id);
+      }
+    
+      // Mettez à jour le stockage local avec le tableau des favoris modifié
+      localStorage.setItem("favoriteMovies", JSON.stringify(favoriteMovies));
+    }
   
   
   

@@ -104,6 +104,7 @@
   
   .details_films p {
     text-align: justify;
+    cursor: pointer;
   }
 
   .details h2 {
@@ -113,12 +114,16 @@
   
   .card {
     margin: 2vh;
-    border:solid #fecc00;
+    width: 20vw;
+    border: solid #fecc00;
     position: relative;
     background-color: #fecc00;
     overflow: hidden;
-    width: 20%;
-    height: 25%;
+  }
+
+  .card img {
+    width: 100%;
+    height: auto;
   }
   
   
@@ -128,10 +133,9 @@
     overflow: hidden;  
   }
   
-  .card img {
-    width: 36vh;
-    height: 50vh;
-  }
+.card .favoris {
+  width: 10vh;
+}
   
   #btn {
     display: flex;
@@ -212,6 +216,22 @@
     background-color: transparent;
     border-bottom:1px solid rgba(255,255,255,.5);
     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+  }
+
+  .favoris img{
+    width: 0vh;
+  }
+
+  .bouton_fav {
+    background-color: transparent;
+    border: none;
+    opacity: 0.5;
+  }
+  .favoris-inactif {
+    opacity: 0.5;
+  }
+  .favoris-active {
+    opacity: 1;
   }
   
 

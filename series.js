@@ -38,7 +38,7 @@ btn_moins.addEventListener("click", function () {
 // Fonction pour récupérer et afficher les films en fonction du numéro de page
 async function fetchAndDisplayMovies(pageNumber) {
         const apiKey = 'e4e579c63025eb13c4c8457b41c2ced2';
-        const url = `https://api.themoviedb.org/3/discover/tv?language=fr&api_key=${apiKey}&page=${pageNumber}`;
+        const url = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&page=${pageNumber}`;
 
         const res = await fetch(url);
         const resData = await res.json();
@@ -69,7 +69,7 @@ async function fetchAndDisplayMovies(pageNumber) {
             details.classList.add("details_films")
 
             const details_title = document.createElement("h2");
-            details_title.textContent = movie.name
+            details_title.textContent = movie.title
 
             const details_VO = document.createElement("h3");
             details_VO.textContent = movie.original_language;
@@ -77,16 +77,41 @@ async function fetchAndDisplayMovies(pageNumber) {
             const details_overview = document.createElement("p");
             details_overview.textContent = movie.overview;
 
+            const favorisButton = document.createElement("button");
+            favorisButton.classList.add("bouton_fav")
+
+            const imgButton = document.createElement("img");
+            imgButton.src="images/logo_popcorn.png"
+            imgButton.classList.add("favoris")
+
+
             details.appendChild(details_title);
             details.appendChild(details_VO);
             details.appendChild(details_overview);
+            favorisButton.appendChild(imgButton);
+            details.appendChild(favorisButton)
 
-            
+            const favoriteMovies =
+            JSON.parse(localStorage.getItem("favoriteMovies")) || [];
+            if (favoriteMovies.includes(movie.id)) {
+                favorisButton.classList.add("favoris-active"); // Ajouter la classe "favoris-active" si l'ID du film est présent dans le stockage local
+            }
+        
+            favorisButton.addEventListener("click", function () {
+              favorisButton.classList.toggle("favoris-inactif");
+              favorisButton.classList.toggle("favoris-active");
+              saveFavoriteSeriesToLocalStorage(movie); // Appeler la fonction pour enregistrer le film dans le stockage local
+              console.log("Bouton favoris cliqué");
+            });
+
+
 
             card.appendChild(details);
-            card.addEventListener('click', () => {
-                window.location.href = `details_series.html?id=${movie.id}`;
-            });            
+            details_overview.addEventListener('click', () => {
+                window.location.href = `detail.html?id=${movie.id}`;
+            });
+            
+            
         }
             console.log(movie)
     });
@@ -132,7 +157,7 @@ async function searchMovie (input) {
             details.classList.add("details_films")
 
             const details_title = document.createElement("h2");
-            details_title.textContent = movie.name
+            details_title.textContent = movie.title
 
             const details_VO = document.createElement("h3");
             details_VO.textContent = movie.original_language;
@@ -140,11 +165,39 @@ async function searchMovie (input) {
             const details_overview = document.createElement("p");
             details_overview.textContent = movie.overview;
 
+            const favorisButton = document.createElement("button");
+            favorisButton.classList.add("bouton_fav")
+
+            const imgButton = document.createElement("img");
+            imgButton.src="images/logo_popcorn.png"
+            imgButton.classList.add("favoris")
+
+
             details.appendChild(details_title);
             details.appendChild(details_VO);
             details.appendChild(details_overview);
+            favorisButton.appendChild(imgButton);
+            details.appendChild(favorisButton)
+
+            const favoriteMovies =
+            JSON.parse(localStorage.getItem("favoriteMovies")) || [];
+            if (favoriteMovies.includes(movie.id)) {
+                favorisButton.classList.add("favoris-active"); // Ajouter la classe "favoris-active" si l'ID du film est présent dans le stockage local
+            }
+        
+            favorisButton.addEventListener("click", function () {
+              favorisButton.classList.toggle("favoris-inactif");
+              favorisButton.classList.toggle("favoris-active");
+              saveFavoriteSeriesToLocalStorage(movie); // Appeler la fonction pour enregistrer le film dans le stockage local
+              console.log("Bouton favoris cliqué");
+            });
+
+
 
             card.appendChild(details);
+            details_overview.addEventListener('click', () => {
+                window.location.href = `detail.html?id=${movie.id}`;
+            });
         }
         
     });
@@ -155,6 +208,22 @@ async function searchMovie (input) {
 
 }
 
+function saveFavoriteSeriesToLocalStorage(serieData) {
+    let favoriteSeries = JSON.parse(localStorage.getItem("favoriteSeries")) || [];
+  
+    const index = favoriteSeries.indexOf(serieData.id); // Vérifier si l'ID du film est déjà dans le tableau des favoris
+  
+    if (index === -1) {
+      // Si l'ID n'est pas trouvé dans le tableau, ajoutez-le
+      favoriteSeries.push(serieData.id);
+    } else {
+      // Si l'ID est déjà présent dans le tableau, retirez-le
+      favoriteSeries = favoriteSeries.filter((id) => id !== serieData.id);
+    }
+  
+    // Mettez à jour le stockage local avec le tableau des favoris modifié
+    localStorage.setItem("favoriteSeries", JSON.stringify(favoriteSeries));
+  }
 
 input.addEventListener("input", function () {
     searchMovie(input.value)
