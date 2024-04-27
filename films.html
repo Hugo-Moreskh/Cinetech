@@ -13,7 +13,6 @@
   <body>
     <header>
       <ul class="navigation">
-
         <li><a href="accueil.html"><img class="logoAccueil" src="/images/logo_cinetech_2.png" alt="connexion"></a></li>
         <li><a href="films.html">Films</a></li>
         <li><a href="series.html">Séries</a></li>
@@ -24,14 +23,22 @@
     <main class="main">
       <section class="containers">
         <div>
-          <h1 class="titre__h1">Films les mieux notés</h1>
-          <div class="card__gallery" id="card-gallery"></div>
-        </div>
-        <div>
-          <h1 class="titre__h1"> Séries les mieux notées</h1>
-          <div class="card__series" id="card-series"></div>
+          <h1 class="titre__h1">Nos films</h1>
+
+          <div class="search-box">
+
+            <button class="btn-search"><i class="fa fa-search" aria-hidden="true"></i></button>
+            <input type="text" class="input-search" placeholder="Type to Search..." id="input_film">
+          </div>
+
+          <div class="card__gallery" id="card-gallery-films"></div>
         </div>
       </section>
+      <div id="btn">
+        <button id="btn_moins"><</button>
+        <button id="btn_actuel"></button>
+        <button id="btn_plus">></button>
+      </div>
     </main>
     <footer>
       <div class="footer">
@@ -44,7 +51,7 @@
       
       <div class="row">
       <ul>
-        <li> <a class="liens" href="lien-de-votre-page"><img class="logoAccueil" src="/images/logo_cinetech_2.png" alt="connexion"></a></li>
+        <li> <a class="liens" href="accueil.html"><img class="logoAccueil" src="/images/logo_cinetech_2.png" alt="connexion"></a></li>
       <li><a class="liens" href="#">Films</a></li>
       <li><a class="liens" href="#"> Séries</a></li>
       <li><a class="liens" href="#"> Favoris</a></li>
@@ -58,5 +65,5 @@
       </div>
       </footer>
   </body>
-  <script src="accueil.js"></script>
+  <script src="films.js"></script>
 </html>
