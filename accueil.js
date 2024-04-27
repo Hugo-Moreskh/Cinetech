@@ -5,12 +5,44 @@ const cardGallery = document.getElementById("card-gallery");
 
 function createCard(data) {
   const card = document.createElement("div");
+
   card.classList.add("card"); // Ajout de la classe "card" à chaque carte
   card.innerHTML = `
-    <img src="https://image.tmdb.org/t/p/w400${data["backdrop_path"]}" >
-    <h2>${data["original_title"]}</h2>
+    <img src="https://image.tmdb.org/t/p/w300${data["poster_path"]}" >
+    
+    <div class="details">
+    <h3>${data["original_title"]}</h3>
+    <p>Langue originale: ${data["original_language"]}</p>
+    <p>${data["overview"]}</p>
+    <button class="bouton-fav"> <img class="favoris" src= "images/logo_popcorn.png"> </button>
+  </div>
   `;
+  const favorisButton = card.querySelector(".bouton-fav"); // Sélectionner le bouton favoris
+
+  favorisButton.classList.add("favoris-inactif"); // Ajouter la classe "favoris-inactif" par défaut
+
+  const favoriteMovies =
+    JSON.parse(localStorage.getItem("favoriteMovies")) || [];
+  if (favoriteMovies.includes(data.id)) {
+    favorisButton.classList.add("favoris-active"); // Ajouter la classe "favoris-active" si l'ID du film est présent dans le stockage local
+  }
+
+  favorisButton.addEventListener("click", function () {
+    favorisButton.classList.toggle("favoris-inactif");
+    favorisButton.classList.toggle("favoris-active");
+    saveFavoriteMoviesToLocalStorage(data); // Appeler la fonction pour enregistrer le film dans le stockage local
+    console.log("Bouton favoris cliqué");
+  });
   cardGallery.appendChild(card);
+}
+
+// Fonction pour enregistrer un film dans le stockage local
+function saveFavoriteMoviesToLocalStorage(movieData) {
+  let favoriteMovies = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
+  if (!favoriteMovies.includes(movieData.id)) {
+    favoriteMovies.push(movieData.id);
+  }
+  localStorage.setItem("favoriteMovies", JSON.stringify(favoriteMovies));
 }
 
 function displayCards(movies) {
@@ -41,16 +73,15 @@ function createSeriesCard(data) {
 
   // Crée une image pour chaque carte
   const image = document.createElement("img");
-  image.src = `https://image.tmdb.org/t/p/w400${data["backdrop_path"]}`;
-
-  // Crée un paragraphe pour le titre de la série
-  const title = document.createElement("h2");
-  title.textContent = data["name"]; // Utilisez "name" pour le titre de la série
-
-  // Ajoute l'image et le titre à la carte
-  card.appendChild(image);
-  card.appendChild(title);
-
+  image.src = `https://image.tmdb.org/t/p/w300${data["poster_path"]}`;
+  card.innerHTML = `
+  <img src="https://image.tmdb.org/t/p/w300${data["poster_path"]}" >
+  <div class="details">
+  <h3>${data["name"]}</h3>
+  <p>Langue originale: ${data["original_language"]}</p>
+  <p>${data["overview"]}</p>
+</div>
+`;
   // Ajoute la carte à la galerie de cartes des séries
   cardSeries.appendChild(card);
 }

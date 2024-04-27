@@ -1,0 +1,107 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.theform {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+  }
+
+.title {
+    font-size: xx-large;
+}
+
+.connexion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FECC00;
+    margin-bottom: 20px;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #303030;
+    color: white;
+    width: 800px;
+    height: auto;
+}
+
+.buttonsub {
+    display: flex;
+    justify-content: center;
+    border: none;
+    margin-bottom: 15px;
+}
+
+#button_connection {
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color: #F68922;
+    border-radius: 3em;
+    width: 20%;
+}
+
+#email {
+    margin-left: 5px;
+    border-radius: 10px;
+    border: none;
+}
+
+#password {
+    margin-left: 5px;
+    border-radius: 10px;
+    border: none;
+}
+
+.inscription {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FECC00;
+    margin-bottom: 20px;
+}
+
+#username {
+    margin-left: 5px;
+    border-radius: 10px;
+    border: none;
+}
+
+#name {
+    margin-left: 5px;
+    border-radius: 10px;
+    border: none;
+}
+
+.input-group {
+    width: 20em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.login {
+    justify-content: center;
+    margin: auto;
+    padding: auto;
+}
+
+.connexion_input {
+    width: 30em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+label {
+    margin: 1em;
+}

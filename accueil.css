@@ -73,8 +73,7 @@ body {
 .logo {
   width: 60px;
   height: 60px;
-  border-left: 1px solid black; /* Couleur et épaisseur de la bordure */
-  padding-left: 5px; /* Espace entre l'image et la bordure */
+  /* padding-left: 5px; Espace entre l'image et la bordure */
 }
 /************************* MAIN**************************/
 
@@ -83,6 +82,7 @@ body {
   text-align: center;
   cursor: pointer;
   padding: 20px;
+  position: relative;
 }
 
 .card__gallery {
@@ -108,6 +108,26 @@ body {
 .card:hover {
   transform: scale(1.1);
 }
+.card:hover .details {
+  display: block;
+}
+
+.details {
+  display: none;
+  position: absolute;
+  top: 0; /* Position à partir du haut de la carte parente */
+  left: 0;
+  width: 87%;
+  height: 66%; /* Position à partir de la gauche de la carte parente */
+  /* Fait correspondre la hauteur à celle de la carte parente */
+  transform: translate(5%, 6%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  z-index: 1;
+}
+
 h2 {
   font-family: "Montserrat Alternates", sans-serif;
   font-weight: 500;
@@ -124,9 +144,22 @@ h2 {
   font-weight: 700;
   font-style: normal;
 }
-
+.favoris {
+  width: 50px;
+}
+.bouton-fav {
+  background-color: transparent;
+  /* border: none; */
+  opacity: 0.5;
+}
+.favoris-inactif {
+  opacity: 0.5;
+}
+.favoris-active {
+  opacity: 1;
+}
 /*******************************FOOTER******************************/
-.footer {
+ .footer {
   background: black;
   padding: 30px 0px;
   font-family: "Play", sans-serif;
@@ -153,7 +186,7 @@ h2 {
 }
 
 .footer .row ul {
-  width: 100%;
+  width: 90%;
 }
 
 .footer .row ul li {
@@ -179,4 +212,212 @@ h2 {
   .footer .row a i {
     margin: 0% 3%;
   }
+}
+
+/*******************************PAGE FILMS******************************/
+
+#card-gallery-films {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#btn_moins, #btn_plus, #btn_actuel {
+    background-color: #303030;
+    border: 1px solid #303030;
+    color: #eee;
+}
+
+#btn_moins:hover, #btn_plus:hover, #btn_actuel:hover{
+  background-color: #191919;
+  border-radius: 10px;
+}
+
+#btn_moins:active, #btn_plus:active, #btn_actuel:active {
+  background-color:#303030 ;
+}
+
+.details_films {
+  padding: 5%;
+  display: none;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+   top: 0;
+  left: 0;
+  justify-content: center; /* Alignement horizontal au centre */
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  text-align: center;
+  z-index: 1;
+}
+
+.details_films p {
+  text-align: justify;
+}
+
+.card {
+  margin-top: 10vh;
+  position: relative;
+  background-color: #fecc00;
+  overflow: hidden;
+  width: 20%;
+  height: 30%;
+}
+
+
+.card:hover .details_films {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;  
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+}
+
+#btn {
+  display: flex;
+  width: 98%;
+  justify-content: center;
+  margin: 1%;
+}
+
+#btn_moins, #btn_plus, #btn_actuel {
+  font-size: 1em;
+
+}
+
+*{
+  box-sizing: border-box;
+}
+
+.search-box{
+  display: flex;
+  align-items: center;
+  vertical-align:middle;
+  padding-top: 10vh;
+  padding-left: 3vh;
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+
+.search-box:h1.titre__h1 {
+  align-self: center;
+
+}
+
+.input-search{
+  height: 50px;
+  width: 50px;
+  border-style: none;
+  padding: 10px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 25vh;
+  transition: all .5s ease-in-out;
+  background-color: #22a6b3;
+  padding-right: 40px;
+  color:#fff;
+}
+.input-search::placeholder{
+  color:rgba(255,255,255,.5);
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+.btn-search{
+  width: 50px;
+  height: 50px;
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  color:#ffffff ;
+  background-color:transparent;
+  pointer-events: painted;  
+}
+.btn-search:focus ~ .input-search{
+  width: 300px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom:1px solid rgba(255,255,255,.5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+.input-search:focus{
+  width: 300px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom:1px solid rgba(255,255,255,.5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+
+/********************************DETAILS**************************************************************/
+
+#detail_main {
+  height: 80vh;
+  align-content: center;
+}
+
+#detail_main #container {
+  display: flex;
+}
+
+#text_container_detail {
+  width: 40vw;
+  padding: 5%;
+}
+
+#text_container_detail h1 {
+ color: #fecc00;
+}
+
+#text_container_detail p {
+  font-size: larger;
+  color: #ffffff;
+}
+
+#image_container_detail {
+  display: flex;
+  height: 60vh;
+  width: 50vw;
+  align-items: center;
+  justify-content: center;
+}
+
+#image_container_detail img {
+  border-radius: 10px;
+  width: 25vw;
+}
+
+
+
+#text_container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+#container_genre {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5%;  
+  width: 70%;
+}
+
+.genre {
+  margin:3%;
+  color: rgb(0, 0, 0);
+  width: 25%;
+  text-align: center;
+  border:solid 1px #fecc00;
+  background-color: #fecc00;
+  border-radius: 20px;
 }
