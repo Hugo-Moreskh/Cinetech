@@ -188,7 +188,7 @@ h2 {
   padding: 5%;
   display: none;
   position: absolute;
-  height: 99%;
+  height: 100%;
   width: 100%;
    top: 0;
   left: 0;
@@ -201,7 +201,9 @@ h2 {
 
 .details p {
   text-align: justify;
-  width: 90%;
+  /* width: 90%; */
+  overflow: scroll;
+
 }
 
 .details h3 {
@@ -225,10 +227,15 @@ h2 {
   overflow: hidden;  
 }
 
-/* .card img {
- width: 36vh;
-  height: 50vh; 
-} */
+.card img {
+  width: 100%;
+  height: 100%; 
+  object-fit: cover;
+}
+
+.card .favoris {
+  width: 10vh;
+  }
 
 #favorisFilms {
   display: flex;

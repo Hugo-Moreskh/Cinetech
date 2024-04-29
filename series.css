@@ -91,8 +91,9 @@ body {
   padding: 5%;
   display: none;
   position: absolute;
-  height: 99%;
-  width: 100%;
+  width: 100%; /* Pour que l'image prenne 100% de la largeur de la div parente */
+  height: 100%; /* Pour que l'image prenne 100% de la hauteur de la div parente */
+  object-fit: cover; 
    top: 0;
   left: 0;
   justify-content: center; /* Alignement horizontal au centre */
@@ -105,9 +106,11 @@ body {
 .details_films p {
   text-align: justify;
   cursor: pointer;
+  overflow: scroll;
+
 }
 
-.details h2 {
+.details_films h2 {
   font-weight: bold;
   color: #fecc00;
 }
@@ -122,8 +125,10 @@ body {
 }
 
 .card img {
-  width: 100%;
   height: auto;
+  width: 100%; /* Pour que l'image prenne 100% de la largeur de la div parente */
+  height: 100%; /* Pour que l'image prenne 100% de la hauteur de la div parente */
+  object-fit: cover; 
 }
 
 
