@@ -104,7 +104,7 @@ body {
 
 .card img {
   display: flex;
-  object-fit: fill;
+  object-fit: cover;
 }
 
 
@@ -136,6 +136,8 @@ body {
   align-self: center;
   text-align: justify;
   width: 90%;
+  overflow: scroll;
+
 }
 
 .details h2 {
@@ -173,6 +175,7 @@ h2 {
 }
 /*******************************FOOTER******************************/
  .footer {
+  width: 103%;
   background: black;
   padding: 30px 0px;
   font-family: "Play", sans-serif;
